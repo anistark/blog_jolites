@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+     
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+<article>
+    <header>
+        <h1> {{post.title}} </h1>
+        <p>
+            Posted on
+            <time datetime="{{post.created|date:"c"}}">
+            {{post.created|date}}
+            </time>
+        </p>
+    </header>
+    <p class="description">
+        {{post.description}}
+    </p>
+    {{post.content|safe}}
+    <!-- Comments  -->
+    {% if comments %}
+        <p>Comments:</p>
+    {% endif %}
+
+    {% for comment in comments %}
+        <div class="comment">
+            <div class="time">{{ comment.created }} | {{ comment.author }}</div>
+            <div class="body">{{ comment.body|linebreaks }}</div>
+        </div>
+    {% endfor %}
+</article>
+{% endblock %}
