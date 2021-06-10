@@ -1,4 +1,4 @@
-Django==1.6.1
+Django==2.2.24
 pinax-theme-bootstrap==5.0.1
 biblion==2.0.0
 
